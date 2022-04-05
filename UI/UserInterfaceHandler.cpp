@@ -40,7 +40,7 @@ namespace UserInterface
 			std::string dob;
 			std::string phoneNum;
 			std::string email;
-			Logical_View::Domain::Resume::Resume resume;
+			std::string resume;
 
 			std::cout << "Please Enter Your Name: \n";
 			std::cin >> name;
@@ -51,8 +51,8 @@ namespace UserInterface
 			std::cout << "Please Enter Your Email: \n";
 			std::cin >> email;
 			std::cout << "Please Enter Your Resume File: \n";
-			//std::cin >> resume;
-			user_account_handler.createProfile(name, dob, phoneNum, email, resume); // Manage Profile - SSD 4 
+			std::cin >> resume;
+			user_account_handler.createProfile(name, dob, phoneNum, email, resume); // Manage Profile - SSD 4
 		}
 
 		//step 2 user logged in enter Main Menu
@@ -81,7 +81,7 @@ namespace UserInterface
 
 		}
 		else if (menuSelection == 2){						//User Selects Review Resume Menu Option
-			Logical_View::Domain::Resume::Resume fileName;
+			std::string fileName;
 			std::cout << "Please Enter the File Name of the Resume you Would like to Upload: \n";
 			//std::cin >> fileName;
 			resume_handler.uploadResume(fileName);		//RateResume - SSD 2
@@ -105,7 +105,7 @@ namespace UserInterface
 				std::string dob;
 				std::string phoneNum;
 				std::string email;
-				Logical_View::Domain::Resume::Resume resume;
+				std::string resume;
 
 				std::cout << "Please Enter Your Name: \n";
 				std::cin >> name;
@@ -116,7 +116,7 @@ namespace UserInterface
 				std::cout << "Please Enter Your Email: \n";
 				std::cin >> email;
 				std::cout << "Please Enter Your Resume File: \n";
-				//std::cin >> resume;
+				std::cin >> resume;
 				user_account_handler.createProfile(name, dob, phoneNum, email, resume); // Manage Profile - SSD 4 
 			}
 			job.getMatchingJobs();						// Manage Profile - SSD 5
