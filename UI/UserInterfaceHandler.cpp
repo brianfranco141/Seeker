@@ -1,17 +1,26 @@
 #include "UserInterfaceHandler.hpp"
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "Domain/Jobs/JobsHandler.hpp"
 #include "Domain/Resume/ResumeHandler.hpp"
 #include "Domain/UserAccount/UserAccountHandler.hpp"
 
+using namespace Logical_View::Domain::Resume;
+using namespace Logical_View::Domain::Jobs;
+using namespace Logical_View::Domain::UserAccount;
+
 namespace UserInterface
-{
+{	
+	ResumeHandler resume_handler;
+	JobsHandler_ job;
+	UserAccountHandler  user_account_handler;
+
 	void UserInterface::launch() {
 		//step 1 authenticate user or Create Account
-		char username;
-		char password;
+		std::string username;
+		std::string password;
 		char logInCreate = 0;
 
 		std::cout << "Welcome to the Seeker Job System! Please Enter a Number to Continue \n";
@@ -24,14 +33,14 @@ namespace UserInterface
 			std::cin >> username;
 			std::cout << "Please Enter your Password: \n";
 			std::cin >> password;
-			UserAccount_.authenticate(username, password);   //Manage Profile / List Jobs / Rate Resume - SSD 1
+			user_account_handler.authenticate(username, password);   //Manage Profile / List Jobs / Rate Resume - SSD 1
 		}
 		else if (logInCreate == 2) {
-			char name;
-			char dob;
-			char phoneNum;
-			char email;
-			char resume;
+			std::string name;
+			std::string dob;
+			std::string phoneNum;
+			std::string email;
+			Logical_View::Domain::Resume::Resume resume;
 
 			std::cout << "Please Enter Your Name: \n";
 			std::cin >> name;
@@ -42,8 +51,8 @@ namespace UserInterface
 			std::cout << "Please Enter Your Email: \n";
 			std::cin >> email;
 			std::cout << "Please Enter Your Resume File: \n";
-			std::cin >> resume;
-			UserAccount_.createProfile(name, dob, phoneNum, email, resume); // Manage Profile - SSD 4 
+			//std::cin >> resume;
+			user_account_handler.createProfile(name, dob, phoneNum, email, resume); // Manage Profile - SSD 4 
 		}
 
 		//step 2 user logged in enter Main Menu
@@ -56,33 +65,33 @@ namespace UserInterface
 		
 		
 		if (menuSelection == 1){							//User Selects Search for Jobs Menu Option
-			char search;
+			std::string search;
 			char listSelect;
 			std::cout << "Enter the Job Field You would Like to Search For: \n";
 			std::cin >> search; 
-			listings.searchBase(search);			//Lists Jobs - SSD 2
+			job.searchBase( search );    //Lists Jobs - SSD 2
 			std::cout << "Would you like to see the [1] - Priority List or [2] - Regular List of Job Listings?: \n";
 			std::cin >> listSelect;
 			if (listSelect == 1) {					// User Selects to see the Priority List of Jobs
-				listings.getPriorityList();		// Lists Jobs - SSD 3
+				job.getPriorityList();		// Lists Jobs - SSD 3
 			}
 			else if (listSelect == 2) {				// User Selects to see the Regular Job Listings 
-				listings.getRegularList();		// Lists Jobs - SSD 4
+				job.getRegularList();		// Lists Jobs - SSD 4
 			}
 
 		}
 		else if (menuSelection == 2){						//User Selects Review Resume Menu Option
-			char fileName;
+			Logical_View::Domain::Resume::Resume fileName;
 			std::cout << "Please Enter the File Name of the Resume you Would like to Upload: \n";
-			std::cin >> fileName;
-			resumeHandler.uploadResume(fileName);		//RateResume - SSD 2
+			//std::cin >> fileName;
+			resume_handler.uploadResume(fileName);		//RateResume - SSD 2
 
 			char resumeReview;
 			std::cout << "Would you like to Submit your Payment for this Resume Review?: Y/N \n"; 
 			std::cout << "(This Will use the Payment Information On the Currently Signed In Account) \n";
-			std::cin >> resumeReview; 
-			resumeHandler.paymentInfoSubmitted(paymentDetails);		//RateResume - SSD 3
-			resumeHandler.reviewResume(resume);					//RateResume - SSD 4
+			//std::cin >> resumeReview; 
+			resume_handler.paymentInfoSubmitted( paymentDetails );    //RateResume - SSD 3
+			resume_handler.reviewResume(resume);					//RateResume - SSD 4
 
 
 		}
@@ -90,13 +99,13 @@ namespace UserInterface
 			char jobInterests;
 			std::cout << "Please Enter your Job Interests: "; 
 			std::cin >> jobInterests;
-			jobsHandler.fillInterests(jobInterests);			//Manage Profile - SSD 2
-			if (jobsHandler.isProfileEmpty()) {				//Manage Profile - SSD 3
-				char name;
-				char dob;
-				char phoneNum;
-				char email;
-				char resume;
+			job.fillInterests(jobInterests);			//Manage Profile - SSD 2
+			if (user_account_handler.isProfileEmpty()) {				//Manage Profile - SSD 3
+				std::string name;
+				std::string dob;
+				std::string phoneNum;
+				std::string email;
+				Logical_View::Domain::Resume::Resume resume;
 
 				std::cout << "Please Enter Your Name: \n";
 				std::cin >> name;
@@ -107,10 +116,10 @@ namespace UserInterface
 				std::cout << "Please Enter Your Email: \n";
 				std::cin >> email;
 				std::cout << "Please Enter Your Resume File: \n";
-				std::cin >> resume;
-				UserAccount_.createProfile(name, dob, phoneNum, email, resume); // Manage Profile - SSD 4 
+				//std::cin >> resume;
+				user_account_handler.createProfile(name, dob, phoneNum, email, resume); // Manage Profile - SSD 4 
 			}
-			jobsHandler.getMatchingJobs();						// Manage Profile - SSD 5
+			job.getMatchingJobs();						// Manage Profile - SSD 5
 
 		}
 

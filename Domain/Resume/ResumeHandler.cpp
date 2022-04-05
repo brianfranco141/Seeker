@@ -3,6 +3,7 @@
 
 std::string Logical_View::Domain::Resume::ResumeHandler::uploadResume(Resume resume) {
 	std::cout << "Successfully Uploaded \n "; 
+	return "test";
 }
 
 void Logical_View::Domain::Resume::ResumeHandler::reviewResume(Resume resume) {
@@ -11,4 +12,5 @@ void Logical_View::Domain::Resume::ResumeHandler::reviewResume(Resume resume) {
 
 std::string Logical_View::Domain::Resume::ResumeHandler::paymentInfoSubmitted(payment paymentDetails) {
 	std::cout << "Payment Successful \n";
+  return "success";
 }

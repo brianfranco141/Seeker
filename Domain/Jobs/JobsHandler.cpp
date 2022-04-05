@@ -15,7 +15,7 @@ std::vector<Logical_View::Domain::Jobs::listings> Logical_View::Domain::Jobs::Jo
 	throw "Not yet implemented";
 }
 
-void Logical_View::Domain::Jobs::JobsHandler_::fillIntterests(int jobType) {
+void Logical_View::Domain::Jobs::JobsHandler_::fillInterests(int jobType) {
 	// TODO - implement JobsHandler ::fillIntterests
 	throw "Not yet implemented";
 }
