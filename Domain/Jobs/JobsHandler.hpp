@@ -24,11 +24,11 @@ namespace Logical_View {
 
 				std::vector <listings> getRegularList();
 
-				void fillIntterests(int jobType);
+				void fillInterests(int jobType);
 
 				void viewListing(int listingNumber);
 
-				std::vector<bool> searchBase(std::string filter);
+				virtual std::vector<bool> searchBase(std::string filter);
 			
 			};
 		}
