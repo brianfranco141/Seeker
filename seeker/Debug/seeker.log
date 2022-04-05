@@ -1,0 +1,16 @@
+﻿  JobsHandler.cpp
+C:\Users\Danny\Desktop\breuh\seek\seeker\Domain\Jobs\JobsHandler.hpp(1,1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ResumeHandler.cpp
+  UserAccountHandler.cpp
+  UserInterfaceHandler.cpp
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(27,4): error C2065: 'UserAccount_': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(46,4): error C2065: 'UserAccount_': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(63,4): error C2065: 'listings': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(67,5): error C2065: 'listings': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(70,5): error C2065: 'listings': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(78,4): error C2065: 'resumeHandler': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(84,4): error C2065: 'resumeHandler': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(84,39): error C2065: 'paymentDetails': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(85,4): error C2065: 'resumeHandler': undeclared identifier
+C:\Users\Danny\Desktop\breuh\seek\seeker\UI\UserInterfaceHandler.cpp(85,31): error C2065: 'resume': undeclared identifier
+  Generating Code...
