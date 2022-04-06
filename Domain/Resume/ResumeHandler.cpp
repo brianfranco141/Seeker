@@ -20,7 +20,7 @@ void Logical_View::Domain::Resume::ResumeHandler::reviewResume(std::string name,
 	std::cout << "Resume Review Response \n";
 }
 
-std::string Logical_View::Domain::Resume::ResumeHandler::paymentInfoSubmitted(std::string creditCardNumber, std::string cardHolderName, std::string csv, std::string amount) {
+void Logical_View::Domain::Resume::ResumeHandler::paymentInfoSubmitted(std::string creditCardNumber, std::string cardHolderName, std::string csv, std::string amount) {
 	applicantCreNum = creditCardNumber;
 	applicantCreName = cardHolderName;
 	applicantCreCsv = csv;

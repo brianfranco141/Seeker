@@ -1,6 +1,16 @@
 #include <iostream>
+#include "UI/UserInterfaceHandler.hpp"
+
+using namespace UserInterface;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	int num = 0;
+	do {
+		UserInterface_ user_;
+		user_.launch();
+        num++;
+	} while( num < 3 );
+
+	return 0;
 }

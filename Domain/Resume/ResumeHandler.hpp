@@ -23,7 +23,7 @@ namespace Logical_View {
 
 				void reviewResume(std::string name, std::string workExperience, std::string education, std::string professionalSkill, std::string interests, std::string volunteerWork);
 
-				std::string paymentInfoSubmitted(std::string creditCardNumber, std::string cardHolderName, std::string csv, std::string amount);
+				void paymentInfoSubmitted(std::string creditCardNumber, std::string cardHolderName, std::string csv, std::string amount);
 
 				void endSession();
 			};

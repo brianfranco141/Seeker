@@ -3,7 +3,7 @@
 
 namespace UserInterface
 {
-	class UserInterface
+	class UserInterface_
 	{
 		public:
 

@@ -15,20 +15,21 @@ namespace Logical_View {
 			};
 
 			class JobsHandler_ {
+				private:
+					std::vector<std::string> applicantInterests;
 
+				public:
+					std::vector<listings> getMatchingJobs();
 
-			public:
-				std::vector<listings> getMatchingJobs();
+					std::vector<listings> getPriorityList();
 
-				std::vector<listings> getPriorityList();
+					std::vector <listings> getRegularList();
 
-				std::vector <listings> getRegularList();
+					void fillInterests( std::vector<std::string> interests );
 
-				void fillInterests(int jobType);
+					void viewListing(int listingNumber);
 
-				void viewListing(int listingNumber);
-
-				virtual std::vector<bool> searchBase(std::string filter);
+					virtual std::vector<bool> searchBase(std::string filter);
 			
 			};
 		}

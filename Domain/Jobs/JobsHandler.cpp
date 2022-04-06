@@ -1,8 +1,32 @@
 #include "JobsHandler.hpp"
 
 std::vector<Logical_View::Domain::Jobs::listings> Logical_View::Domain::Jobs::JobsHandler_::getMatchingJobs() {
-	// TODO - implement JobsHandler ::getMatchingJobs
-	throw "Not yet implemented";
+  std::vector<listings> jobs;
+  listings softwareEngineer;
+  softwareEngineer.listName = "Software Development";
+  softwareEngineer.listEmployer = "Google";
+  softwareEngineer.listLocation = "Los Angeles, CA";
+  jobs.push_back( softwareEngineer );
+
+  listings dataScience;
+  dataScience.listName = "Data Scientist";
+  dataScience.listEmployer = "NASA";
+  dataScience.listLocation = "Washington, D.C.";
+  jobs.push_back( dataScience );
+
+  listings iT;
+  iT.listName = "Information Techonology Specialist";
+  iT.listEmployer = "CSUF";
+  iT.listLocation = "Fullerton, CA";
+  jobs.push_back( iT );
+
+  listings customerService;
+  customerService.listName = "Customer Service Representative";
+  customerService.listEmployer = "UPS";
+  customerService.listLocation = "Garden Grove, CA";
+  jobs.push_back( customerService );
+
+  return jobs;
 }
 
 std::vector<Logical_View::Domain::Jobs::listings> Logical_View::Domain::Jobs::JobsHandler_::getPriorityList() {
@@ -15,9 +39,8 @@ std::vector<Logical_View::Domain::Jobs::listings> Logical_View::Domain::Jobs::Jo
 	throw "Not yet implemented";
 }
 
-void Logical_View::Domain::Jobs::JobsHandler_::fillInterests(int jobType) {
-	// TODO - implement JobsHandler ::fillIntterests
-	throw "Not yet implemented";
+void Logical_View::Domain::Jobs::JobsHandler_::fillInterests(std::vector<std::string>interests) {
+	applicantInterests = interests;
 }
 
 void Logical_View::Domain::Jobs::JobsHandler_::viewListing(int listingNumber) {
