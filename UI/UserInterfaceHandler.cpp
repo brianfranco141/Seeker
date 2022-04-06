@@ -122,7 +122,7 @@ namespace UserInterface
 				std::cout << "Would you like to Proceed with this payment? [1] - Yes / [2] - No \n";
 				std::cin >> paymentMenu;
 				if (paymentMenu == 1) {
-					std:: cout << resume_handler.paymentInfoSubmitted(ccNum, ccName, csv, amount);
+					resume_handler.paymentInfoSubmitted(ccNum, ccName, csv, amount);
 				}
 				int sessionEnder;
 				std::cout << "Would you like to end your current session? [1] - Yes / [2] - No \n";
