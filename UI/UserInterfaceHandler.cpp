@@ -62,74 +62,142 @@ namespace UserInterface
 			std::cout << "Welcome to the Seeker Main Menu Please enter a Number to Continue: \n";
 			std::cout << "[1] - Search for Jobs\n";
 			std::cout << "[2] - Review Resume \n";
-			std::cout << "[3] - Review User Account \n";
+			std::cout << "[3] - Manage User Account \n";
 			std::cin >> menuSelection;
 
 
 			if (menuSelection == 1) {							//User Selects Search for Jobs Menu Option
 				std::string search;
 				char listSelect;
-				std::cout << "Enter the Job Field You would Like to Search For: \n";
+				std::cout << "Enter the Job Field You would Like to Filter Your Search For: \n";
 				std::cin >> search;
-				job.searchBase(search);    //Lists Jobs - SSD 2
-				std::cout << "Would you like to see the [1] - Priority List or [2] - Regular List of Job Listings?: \n";
-				std::cin >> listSelect;
-				if (listSelect == 1) {					// User Selects to see the Priority List of Jobs
-					job.getPriorityList();		// Lists Jobs - SSD 3
-				}
-				else if (listSelect == 2) {				// User Selects to see the Regular Job Listings 
-					job.getRegularList();		// Lists Jobs - SSD 4
+				//job.searchBase(search);					// List Jobs - SSD 2
+				std::cout << "Displaying the Jobs on the Priority List: \n";
+				std::vector<listings> priorityList = job.getPriorityList();
+				for (int i = 0; i < priorityList.size(); i++) {
+
+					std::cout << "Job name: " << priorityList[i].listName << std::endl;
+					std::cout << "Job location: " << priorityList[i].listLocation << std::endl;
+					std::cout << "Employer: " << priorityList[i].listEmployer << std::endl << std::endl;
 				}
 
-			}
-			else if (menuSelection == 2) {						//User Selects Review Resume Menu Option
-				std::string name;
-				std::string workExp;
-				std::string proSkill;
-				std::string interests;
-				std::string volunteerWork;
-				std::string education;
-				
-				std::cout << "We will now take information for your Resume: \n";
-				std::cout << "Please Enter Your Name: \n";
-				std::cin >> name;
-				std::cout << "Please Enter Your Work Experience: \n";
-				std::cin >> workExp;
-				std::cout << "Please Enter Your Professional Skills: \n";
-				std::cin >> proSkill;
-				std::cout << "Please Enter Your Interests: \n";
-				std::cin >> interests;
-				std::cout << "Please Enter Your Volunteer Work: \n";
-				std::cin >> volunteerWork;
-				std::cout << "Please Enter Your Education Level: \n";
-				std::cin >> education;
-				resume_handler.uploadResume(name, workExp, proSkill, interests, volunteerWork, education); // RateResume - SSD 2
-				
-				std::string ccNum;
-				std::string ccName;
-				std::string csv;
-				std::string amount;
-				std::cout << "Please Input Your Payment Information: \n";
-				std::cout << "Please Input Your Credit Card Number: \n";
-				std::cin >> ccNum;
-				std::cout << "Please Input the Name of the Credit Card Holder: \n";
-				std::cin >> ccName;
-				std::cout << "Please Input the Card's CSV: \n";
-				std::cin >> csv;
-				std::cout << "Please Input the Amount Due for this Review: \n";
-				std::cin >> amount;
-				int paymentMenu;
-				std::cout << "Would you like to Proceed with this payment? [1] - Yes / [2] - No \n";
-				std::cin >> paymentMenu;
-				if (paymentMenu == 1) {
-					resume_handler.paymentInfoSubmitted(ccNum, ccName, csv, amount);
+				std::cout << "\n" << std::endl;
+
+				std::cout << "Displaying the Jobs on the Regular List: \n";
+				std::vector<listings> regularList = job.getPriorityList();
+				for (int i = 0; i < regularList.size(); i++) {
+
+					std::cout << "Job name: " << regularList[i].listName << std::endl;
+					std::cout << "Job location: " << regularList[i].listLocation << std::endl;
+					std::cout << "Employer: " << regularList[i].listEmployer << std::endl << std::endl;
 				}
+
+
 				int sessionEnder;
 				std::cout << "Would you like to end your current session? [1] - Yes / [2] - No \n";
 				std::cin >> sessionEnder;
 				if (sessionEnder == 1) {
 					std::cout << "Thank You for Using Seeker, We hope to See you again \n";
 					std::cout << "\n";
+				}
+			}
+
+			else if (menuSelection == 2) {						//User Selects Review Resume Menu Option
+				int selectChoice = 0;
+
+				std::cout << "....Welcome to the Review Resume....\n";
+				while (selectChoice != 3)
+				{
+					std::cout << "Please make a choice \n";
+					std::cout << "[1] - Review for the first time \n";
+					std::cout << "[2] - Review another time \n";
+					std::cout << "[3] - Quit\n";
+					std::cin >> selectChoice;
+
+					if (selectChoice == 1)
+					{
+						std::string name;
+						std::string workExp;
+						std::string proSkill;
+						std::string interests;
+						std::string volunteerWork;
+						std::string education;
+
+						std::cout << "Enter the Details of your Resume to Rate :  \n";
+						std::cout << "Please Enter Your Name: \n";
+						std::cin >> name;
+						std::cout << "Please Enter Your Work Experience: \n";
+						std::cin >> workExp;
+						std::cout << "Please Enter Your Professional Skills: \n";
+						std::cin >> proSkill;
+						std::cout << "Please Enter Your Interests: \n";
+						std::cin >> interests;
+						std::cout << "Please Enter Your Volunteer Work: \n";
+						std::cin >> volunteerWork;
+						std::cout << "Please Enter Your Education Level: \n";
+						std::cin >> education;
+						resume_handler.uploadResume(name, workExp, proSkill, interests, volunteerWork, education);
+					}    // RateResume - SSD 2
+					else if (selectChoice == 2)
+					{
+						std::string ccNum;
+						std::string ccName;
+						std::string csv;
+						std::string amount;
+						std::cout << "Please Enter Your Payment Information: \n";
+						std::cout << "Please Enter Your Credit Card Number: \n";
+						std::cin >> ccNum;
+						std::cout << "Please Enter the Name of the Credit Card Holder: \n";
+						std::cin >> ccName;
+						std::cout << "Please Enter the Card's CSV: \n";
+						std::cin >> csv;
+						std::cout << "Please Enter the Amount Due for this Review: \n";
+						std::cin >> amount;
+						int paymentMenu;
+						std::cout << "Would you like to Proceed with this payment? [1] - Yes / [2] - No \n";
+						std::cin >> paymentMenu;
+						if (paymentMenu == 1)
+						{
+							resume_handler.paymentInfoSubmitted(ccNum, ccName, csv, amount);
+						}
+						else
+						{
+							break;
+						}
+						std::string name;
+						std::string workExp;
+						std::string proSkill;
+						std::string interests;
+						std::string volunteerWork;
+						std::string education;
+
+						std::cout << "Enter the Details of your Resume to RE-RATE :  \n";
+						std::cout << "Please Enter Your Name: \n";
+						std::cin >> name;
+						std::cout << "Please Enter Your Work Experience: \n";
+						std::cin >> workExp;
+						std::cout << "Please Enter Your Professional Skills: \n";
+						std::cin >> proSkill;
+						std::cout << "Please Enter Your Interests: \n";
+						std::cin >> interests;
+						std::cout << "Please Enter Your Volunteer Work: \n";
+						std::cin >> volunteerWork;
+						std::cout << "Please Enter Your Education Level: \n";
+						std::cin >> education;
+						resume_handler.reviewResume(name, workExp, proSkill, interests, volunteerWork, education);
+						//int sessionEnder;
+						//std::cout << "Would you like to end your current session? [1] - Yes / [2] - No \n";
+						//std::cin >> sessionEnder;
+						//if( sessionEnder == 1 )
+						//{
+						  //std::cout << "Thank You for Using Seeker, We hope to See you again \n";
+						  //std::cout << "\n";
+						//}
+					}
+					else if (selectChoice == 3)
+					{
+						break;
+					}
 				}
 
 
